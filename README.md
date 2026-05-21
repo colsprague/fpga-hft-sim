@@ -21,11 +21,11 @@ The current focus is on:
 
 ## Repository Structure
 '''
-rtl/      -> FPGA logic
-sim/      -> testbenches and simulations
-python/   -> modeling and analysis tools
-docs/     -> architecture notes
-results/  -> latency measurements and outputs
+- rtl/      -> FPGA logic
+- sim/      -> testbenches and simulations
+- python/   -> modeling and analysis tools
+- docs/     -> architecture notes
+- results/  -> latency measurements and outputs
 '''
 
 ## Goals
