@@ -19,4 +19,8 @@
 - Ultimately, FPGA characteristics fit live market needs much better
 #### FPGA System Architecture (Top -> Bottom)
 - ...
-#### 
+#### Network Interface Layer - Kernel Bypass
+- Market data arrives as Ethernet packets at 10+ Gbps
+- Typically arrives as UDP, TCP, or Direct Ethernet for FPGA
+#### Market Data Parser (ITCH/FAST Protocol)
+- 
