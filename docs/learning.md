@@ -38,4 +38,15 @@
 - All of these run under 'Pipeline Parallelism' (Every pipeline is constantly working)
 #### Next Steps (C++ Code)
 - Create a program that simulates an order book. Starts with x number of buy and sell orders, then randomly adds buy, sell, or execute orders. Orders will be written to an external file. At y lines, the file becomes static and will be used as input for the HFT system. Important: Code/output should be efficient, use ITCH protocol
-
+### 2026-06-12 - ITCH
+#### Source(s)
+- https://www.nasdaqtrader.com/content/technicalsupport/specifications/dataproducts/NQTVITCHspecification.pdf
+#### Notes
+- Three ITCH protocols, for FPGA, UDP is used
+- Formatted in big endian (most significant byte first)
+- Alpha fields are ASCII, left justified, padded with spaces
+- Will focus on Add Order, no MPID Attribution
+- 36-Byte (288-bit) message, format found on nasdaqtrader site
+#### Application
+- Generation code will initialize some amount of buy and sell orders
+- Then code will randomly add buy, sell, execute orders
