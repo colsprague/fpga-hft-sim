@@ -43,7 +43,7 @@
 - https://www.nasdaqtrader.com/content/technicalsupport/specifications/dataproducts/NQTVITCHspecification.pdf
 #### Notes
 - Three ITCH protocols, for FPGA, UDP is used
-- Formatted in big endian (most significant byte first)
+- Formatted in big endian (most significant byte stored last)
 - Alpha fields are ASCII, left justified, padded with spaces
 - Will focus on Add Order, no MPID Attribution
 - 36-Byte (288-bit) message, format found on nasdaqtrader site
