@@ -64,4 +64,21 @@ int main() {
         reference_number++;
     }
 
+    // Generate sell orders around the mid price
+    for (int i = 0; i < 50; i++) {
+        order.message_type       = 0x41;         // 'A' for add order
+        order.stock_locate       = __builtin_bswap16(0x00'01);
+        order.tracking_number    = __builtin_bswap16(0x00'00);
+        memcpy(order.timestamp, &sim_time_ns, 6);
+        reverse(begin(order.timestamp), end(order.timestamp));
+        order.order_reference_number = __builtin_bswap64(reference_number);
+        order.buy_sell_indicator = 0x53;         // 'S' for sell order
+        order.shares             = __builtin_bswap32(100);
+        order.stock              = __builtin_bswap64(0x41'41'50'4C'20'20'20'20); // "AAPL    "
+        order.price              = __builtin_bswap32(starting_price + (i + 1) * diff);
+
+        bin_file.write(reinterpret_cast<const char*>(&order), sizeof(order));
+
+        reference_number++;
+    }
 }
