@@ -38,7 +38,7 @@
 - All of these run under 'Pipeline Parallelism' (Every pipeline is constantly working)
 #### Next Steps (C++ Code)
 - Create a program that simulates an order book. Starts with x number of buy and sell orders, then randomly adds buy, sell, or execute orders. Orders will be written to an external file. At y lines, the file becomes static and will be used as input for the HFT system. Important: Code/output should be efficient, use ITCH protocol
-### 2026-06-12 - ITCH
+### 2026-06-12 - ITCH & Coding
 #### Source(s)
 - https://www.nasdaqtrader.com/content/technicalsupport/specifications/dataproducts/NQTVITCHspecification.pdf
 #### Notes
@@ -50,3 +50,16 @@
 #### Application
 - Generation code will initialize some amount of buy and sell orders
 - Then code will randomly add buy, sell, execute orders
+### Coding Progress / Thoughts
+- Message Type defines the type of message. Program simulates add orders (value of 'A')
+- Stock Locate varies day by day (constant for the day, though). Simulation will pick a value (0x00'01). Seems like another program parses pre-market data.
+- Tracking Number is not used for trading logic, set to 0x00'00
+- Currently unsure of how to simulate Time Stamp, but it represents the number of nanoseconds since midnight
+- Order Reference Number iterates for each trade (first trade is 1, second is 2, etc)
+- B/S Indicator informs whether order is to buy ('B') or sell ('S')
+- Shares is the number of shares per order (100 used for pre-market setup)
+- Stock is the stock ticker symbol ("AAPL" used, left justified, padded by spaces)
+- Price is the order price with 4 decimals of precision ($100.25 -> 1002500)
+- ITCH Structure complete. Since results will be printed to a binary file, data is printed completely (16 bit value, even if stores a single bit, still prints 16 bits), #pragma is used to prevent unecessary padding.
+- IMPORTANT LEARN: each memory address stores a single byte (8-bits). If we have some x-byte integer, the endianness (big or little) determines where the effected bytes of the integer end up IN MEMORY. CPU runs on little-endian, NASDAQ runs on big-endian, so to make it realistic, C++ code needs some manipulation to match (__builtin_bswapX, where X is the number of bits).
+
