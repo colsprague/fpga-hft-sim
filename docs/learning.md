@@ -62,4 +62,5 @@
 - Price is the order price with 4 decimals of precision ($100.25 -> 1002500)
 - ITCH Structure complete. Since results will be printed to a binary file, data is printed completely (16 bit value, even if stores a single bit, still prints 16 bits), #pragma is used to prevent unecessary padding.
 - IMPORTANT LEARN: each memory address stores a single byte (8-bits). If we have some x-byte integer, the endianness (big or little) determines where the effected bytes of the integer end up IN MEMORY. CPU runs on little-endian, NASDAQ runs on big-endian, so to make it realistic, C++ code needs some manipulation to match (__builtin_bswapX, where X is the number of bits).
+- Seems like simply writing to .bin with fout << xyz; turns bytes to ASCII values which messes up the binary file. A work around is to use file.write()
 
